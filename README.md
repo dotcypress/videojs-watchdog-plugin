@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dotcypress/videojs-watchdog-plugin.svg?branch=master)](https://travis-ci.org/dotcypress/videojs-watchdog-plugin)
+
 # videojs-watchdog-plugin
 
 Internet watchdog for video.js
