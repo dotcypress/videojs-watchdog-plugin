@@ -1,0 +1,13 @@
+{
+  "name": "videojs-watchdog-plugin",
+  "author": "Vitaly Domnikov <dotcypress@gmail.com>;",
+  "license": "MIT",
+  "main": [
+    "dist/videojs-watchdog-plugin.min.js"
+  ],
+  "keywords": [
+    "videojs",
+    "videojs-plugin"
+  ]
+}
+
