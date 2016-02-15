@@ -24,9 +24,6 @@
     "test:firefox": "npm run pretest && karma start test/karma.conf.js --browsers Firefox",
     "test:ie": "npm run pretest && karma start test/karma.conf.js --browsers IE",
     "test:safari": "npm run pretest && karma start test/karma.conf.js --browsers Safari",
-    "preversion": "npm test",
-    "version": "babel-node scripts/version.js",
-    "postversion": "babel-node scripts/postversion.js",
     "prepublish": "npm run build"
   },
   "keywords": [
