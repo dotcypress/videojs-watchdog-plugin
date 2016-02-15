@@ -1,6 +1,6 @@
 {
   "name": "videojs-watchdog-plugin",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Internet watchdog for video.js",
   "main": "es5/plugin.js",
   "scripts": {
@@ -33,6 +33,10 @@
     "videojs",
     "videojs-plugin"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dotcypress/videojs-watchdog-plugin.git"
+  },
   "author": "Vitaly Domnikov <dotcypress@gmail.com>",
   "license": "MIT",
   "browserify": {
