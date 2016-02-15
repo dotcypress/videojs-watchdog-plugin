@@ -1,6 +1,6 @@
 {
   "name": "videojs-watchdog-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Internet watchdog for video.js",
   "main": "es5/plugin.js",
   "scripts": {

@@ -1,6 +1,6 @@
 /**
  * videojs-watchdog-plugin
- * @version 0.1.0
+ * @version 0.1.1
  * @copyright 2016 Vitaly Domnikov <dotcypress@gmail.com>
  * @license MIT
  */
@@ -116,7 +116,7 @@ var watchdogPlugin = function watchdogPlugin(options) {
 _videoJs2['default'].plugin('watchdogPlugin', watchdogPlugin);
 
 // Include the version number.
-watchdogPlugin.VERSION = '0.1.0';
+watchdogPlugin.VERSION = '0.1.1';
 
 exports['default'] = watchdogPlugin;
 module.exports = exports['default'];
