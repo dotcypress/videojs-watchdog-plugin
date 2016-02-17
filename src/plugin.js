@@ -67,7 +67,7 @@ const onPlayerReady = (player, options) => {
         return;
       }
       if (navigator.onLine && player.src()) {
-        if(request){
+        if (request) {
           request.abort();
         }
         request = new XMLHttpRequest();
@@ -105,7 +105,7 @@ const onPlayerReady = (player, options) => {
       `<div class='vjs-watchdog-display'>
         <h4>${options.errors[error.code].headline}</h4>
       </div>`;
-      display.fillWith(content);
+    display.fillWith(content);
   });
 
   player.on('dispose', function() {
