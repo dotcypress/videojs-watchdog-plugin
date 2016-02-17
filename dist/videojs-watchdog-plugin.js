@@ -1,6 +1,6 @@
 /**
  * videojs-watchdog-plugin
- * @version 0.1.1
+ * @version 0.1.2
  * @copyright 2016 Vitaly Domnikov <dotcypress@gmail.com>
  * @license MIT
  */
@@ -20,7 +20,41 @@ var _videoJs2 = _interopRequireDefault(_videoJs);
 
 // Default options for the plugin.
 var defaults = {
-  timeout: 1000
+  timeout: 1000,
+  errors: {
+    '1': {
+      type: 'MEDIA_ERR_ABORTED',
+      headline: 'The video download was cancelled'
+    },
+    '2': {
+      type: 'MEDIA_ERR_NETWORK',
+      headline: 'The video connection was lost, please confirm you are ' + 'connected to the internet'
+    },
+    '3': {
+      type: 'MEDIA_ERR_DECODE',
+      headline: 'The video is bad or in a format that cannot be played on your browser'
+    },
+    '4': {
+      type: 'MEDIA_ERR_SRC_NOT_SUPPORTED',
+      headline: 'This video is either unavailable or not supported in this browser'
+    },
+    '5': {
+      type: 'MEDIA_ERR_ENCRYPTED',
+      headline: 'The video you are trying to watch is encrypted and we do not know how ' + 'to decrypt it'
+    },
+    'unknown': {
+      type: 'MEDIA_ERR_UNKNOWN',
+      headline: 'An unanticipated problem was encountered, check back soon and try again'
+    },
+    '-1': {
+      type: 'PLAYER_ERR_NO_SRC',
+      headline: 'No video has been loaded'
+    },
+    '-2': {
+      type: 'PLAYER_ERR_TIMEOUT',
+      headline: 'Could not download the video'
+    }
+  }
 };
 
 /**
@@ -39,6 +73,7 @@ var onPlayerReady = function onPlayerReady(player, options) {
   var watchdog = undefined;
   var lastTime = undefined;
   var errorTime = undefined;
+  var request = undefined;
   var waitingForConnection = false;
 
   var resetWatchdog = function resetWatchdog() {
@@ -48,8 +83,10 @@ var onPlayerReady = function onPlayerReady(player, options) {
         return;
       }
       if (navigator.onLine && player.src()) {
-        var request = new XMLHttpRequest();
-
+        if (request) {
+          request.abort();
+        }
+        request = new XMLHttpRequest();
         request.open('head', options.testUrl || player.src(), true);
         request.onreadystatechange = function receiveResponse() {
           if (this.readyState === 4 && this.status === 200) {
@@ -76,13 +113,12 @@ var onPlayerReady = function onPlayerReady(player, options) {
     if (player.src() && error.code === 2) {
       waitingForConnection = true;
       errorTime = lastTime;
-
-      var content = document.createElement('div');
-
-      display = player.errorDisplay;
-      content.innerHTML = '<div class=\'vjs-watchdog-display\'>\n        <h4>The video connection was lost</h4>\n      </div>';
-      display.fillWith(content);
     }
+    var content = document.createElement('div');
+
+    display = player.errorDisplay;
+    content.innerHTML = '<div class=\'vjs-watchdog-display\'>\n        <h4>' + options.errors[error.code].headline + '</h4>\n      </div>';
+    display.fillWith(content);
   });
 
   player.on('dispose', function () {
@@ -116,7 +152,7 @@ var watchdogPlugin = function watchdogPlugin(options) {
 _videoJs2['default'].plugin('watchdogPlugin', watchdogPlugin);
 
 // Include the version number.
-watchdogPlugin.VERSION = '0.1.1';
+watchdogPlugin.VERSION = '0.1.2';
 
 exports['default'] = watchdogPlugin;
 module.exports = exports['default'];
