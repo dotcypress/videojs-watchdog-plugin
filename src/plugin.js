@@ -29,14 +29,6 @@ const defaults = {
     'unknown': {
       type: 'MEDIA_ERR_UNKNOWN',
       headline: 'An unanticipated problem was encountered, check back soon and try again'
-    },
-    '-1': {
-      type: 'PLAYER_ERR_NO_SRC',
-      headline: 'No video has been loaded'
-    },
-    '-2': {
-      type: 'PLAYER_ERR_TIMEOUT',
-      headline: 'Could not download the video'
     }
   }
 };
