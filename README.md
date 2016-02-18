@@ -66,7 +66,6 @@ require(['video.js', 'videojs-watchdog-plugin'], function(videojs) {
 
 ## License
 
-MIT. Copyright (c) Vitaly Domnikov <dotcypress@gmail.com>;
-
+MIT. Copyright (c) Vitaly Domnikov <dotcypress@gmail.com>
 
 [videojs]: http://videojs.com/

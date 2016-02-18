@@ -1,6 +1,6 @@
 /**
  * videojs-watchdog-plugin
- * @version 0.1.2
+ * @version 0.1.3
  * @copyright 2016 Vitaly Domnikov <dotcypress@gmail.com>
  * @license MIT
  */
@@ -104,7 +104,7 @@ var onPlayerReady = function onPlayerReady(player, options) {
   };
 
   player.on('timeupdate', function () {
-    lastTime = player.currentTime();
+    lastTime = player.cache_.currentTime;
   });
 
   player.on('error', function () {
@@ -152,7 +152,7 @@ var watchdogPlugin = function watchdogPlugin(options) {
 _videoJs2['default'].plugin('watchdogPlugin', watchdogPlugin);
 
 // Include the version number.
-watchdogPlugin.VERSION = '0.1.2';
+watchdogPlugin.VERSION = '0.1.3';
 
 exports['default'] = watchdogPlugin;
 module.exports = exports['default'];

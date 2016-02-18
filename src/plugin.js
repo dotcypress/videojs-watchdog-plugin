@@ -88,7 +88,7 @@ const onPlayerReady = (player, options) => {
   };
 
   player.on('timeupdate', function() {
-    lastTime = player.currentTime();
+    lastTime = player.cache_.currentTime;
   });
 
   player.on('error', function() {
