@@ -55,7 +55,6 @@ const defaults = {
 const onPlayerReady = (player, options) => {
   let display;
   let watchdog;
-  let lastTime;
   let errorTime;
   let request;
   let waitingForConnection = false;
@@ -82,21 +81,16 @@ const onPlayerReady = (player, options) => {
           }
         };
         request.send();
-        request = null;
       }
     }, options.timeout);
   };
-
-  player.on('timeupdate', function() {
-    lastTime = player.cache_.currentTime;
-  });
 
   player.on('error', function() {
     let error = player.error();
 
     if (player.src() && error.code === 2) {
       waitingForConnection = true;
-      errorTime = lastTime;
+      errorTime = player.cache_.currentTime;
     }
     let content = document.createElement('div');
 

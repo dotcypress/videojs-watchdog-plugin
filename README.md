@@ -25,7 +25,6 @@ To include videojs-watchdog-plugin on your website or web application, use any o
 This is the simplest case. Get the script in whatever way you prefer and include the plugin _after_ you include [video.js][videojs], so that the `videojs` global is available.
 
 ```html
-<link href='//path/to/videojs-watchdog.css' rel='stylesheet'>
 <script src="//path/to/video.min.js"></script>
 <script src="//path/to/videojs-watchdog-plugin.min.js"></script>
 <script>

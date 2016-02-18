@@ -1,6 +1,6 @@
 /**
  * videojs-watchdog-plugin
- * @version 0.1.3
+ * @version 0.1.4
  * @copyright 2016 Vitaly Domnikov <dotcypress@gmail.com>
  * @license MIT
  */
@@ -71,7 +71,6 @@ var defaults = {
 var onPlayerReady = function onPlayerReady(player, options) {
   var display = undefined;
   var watchdog = undefined;
-  var lastTime = undefined;
   var errorTime = undefined;
   var request = undefined;
   var waitingForConnection = false;
@@ -98,21 +97,16 @@ var onPlayerReady = function onPlayerReady(player, options) {
           }
         };
         request.send();
-        request = null;
       }
     }, options.timeout);
   };
-
-  player.on('timeupdate', function () {
-    lastTime = player.cache_.currentTime;
-  });
 
   player.on('error', function () {
     var error = player.error();
 
     if (player.src() && error.code === 2) {
       waitingForConnection = true;
-      errorTime = lastTime;
+      errorTime = player.cache_.currentTime;
     }
     var content = document.createElement('div');
 
@@ -152,7 +146,7 @@ var watchdogPlugin = function watchdogPlugin(options) {
 _videoJs2['default'].plugin('watchdogPlugin', watchdogPlugin);
 
 // Include the version number.
-watchdogPlugin.VERSION = '0.1.3';
+watchdogPlugin.VERSION = '0.1.4';
 
 exports['default'] = watchdogPlugin;
 module.exports = exports['default'];
