@@ -22,37 +22,29 @@ var _videoJs2 = _interopRequireDefault(_videoJs);
 var defaults = {
   timeout: 1000,
   errors: {
-    '1': {
+    1: {
       type: 'MEDIA_ERR_ABORTED',
       headline: 'The video download was cancelled'
     },
-    '2': {
+    2: {
       type: 'MEDIA_ERR_NETWORK',
       headline: 'The video connection was lost, please confirm you are ' + 'connected to the internet'
     },
-    '3': {
+    3: {
       type: 'MEDIA_ERR_DECODE',
       headline: 'The video is bad or in a format that cannot be played on your browser'
     },
-    '4': {
+    4: {
       type: 'MEDIA_ERR_SRC_NOT_SUPPORTED',
       headline: 'This video is either unavailable or not supported in this browser'
     },
-    '5': {
+    5: {
       type: 'MEDIA_ERR_ENCRYPTED',
       headline: 'The video you are trying to watch is encrypted and we do not know how ' + 'to decrypt it'
     },
-    'unknown': {
+    unknown: {
       type: 'MEDIA_ERR_UNKNOWN',
       headline: 'An unanticipated problem was encountered, check back soon and try again'
-    },
-    '-1': {
-      type: 'PLAYER_ERR_NO_SRC',
-      headline: 'No video has been loaded'
-    },
-    '-2': {
-      type: 'PLAYER_ERR_TIMEOUT',
-      headline: 'Could not download the video'
     }
   }
 };
